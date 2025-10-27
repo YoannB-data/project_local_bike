@@ -69,18 +69,18 @@ models:
         tests:
           - not_null
           - relationships:
-            arguments:
-              name: store_id_foreign_key_in_stg_production__stocks
-              to: ref('stg_sales__stores')
-              field: store_id
+              arguments:
+                name: store_id_foreign_key_in_stg_production__stocks
+                to: ref('stg_sales__stores')
+                field: store_id
       - name: product_id
         description: "The id of the bike."
         tests:
           - not_null
           - relationships:
-            arguments:
-              name: product_id_foreign_key_in_stg_production__stocks
-              to: ref('stg_production__products')
-              field: product_id
+              arguments:
+                name: product_id_foreign_key_in_stg_production__stocks
+                to: ref('stg_production__products')
+                field: product_id
       - name: quantity
         description: "The available stock quantity."
