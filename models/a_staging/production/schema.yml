@@ -1,0 +1,86 @@
+version: 2
+
+models:
+  - name: stg_production__brands
+    description: "This model contains the list of bike brands"
+    columns:
+      - name: brand_id
+        description: "Primary key, unique identifier for each brand."
+        tests:
+          - unique
+          - not_null
+      - name: brand_name
+        description: "Brands name."
+        tests:
+          - not_null
+
+
+  - name: stg_production__categories
+    description: "This model contains the list of bike categories"
+    columns:
+      - name: category_id
+        description: "Primary key, unique identifier for each category."
+        tests:
+          - unique
+          - not_null
+      - name: category_name
+        description: "Categories name."
+        tests:
+          - not_null
+
+
+  - name: stg_production__products
+    description: "This model contains the list of available bikes."
+    columns:
+      - name: product_id
+        description: "Primary key, unique identifier for each bike."
+        tests:
+          - unique
+          - not_null
+      - name: category_name
+        description: "The name of the bike."
+      - name: brand_id
+        description: "The brand of the bike."
+        tests:
+          - relationships:
+              arguments:
+                name: brand_id_foreign_key_in_stg_production__products
+                to: ref('stg_production__brands')
+                field: brand_id
+      - name: category_id
+        description: "The category of the bike."
+        tests:
+          - relationships:
+              arguments:
+                name: category_id_foreign_key_in_stg_production__products
+                to: ref('stg_production__categories')
+                field: category_id
+      - name: model_year
+        description: "The bike model year."
+      - name: list_price
+        description: "The price of the bike."
+
+
+  - name: stg_production__stocks
+    description: "This model contains the stock of bikes in each store."
+    columns:
+      - name: store_id
+        description: "The id of the store."
+        tests:
+          - not_null
+          - relationships:
+            arguments:
+              name: store_id_foreign_key_in_stg_production__stocks
+              to: ref('stg_sales__stores')
+              field: store_id
+      - name: product_id
+        description: "The id of the bike."
+        tests:
+          - not_null
+          - relationships:
+            arguments:
+              name: product_id_foreign_key_in_stg_production__stocks
+              to: ref('stg_production__products')
+              field: product_id
+      - name: quantity
+        description: "The available stock quantity."
