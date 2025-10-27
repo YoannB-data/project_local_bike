@@ -1,0 +1,210 @@
+version: 2
+
+models:
+  - name: stg_sales__customers
+    description: "This model contains the list of customers"
+    columns:
+      - name: customer_id
+        description: "Primary key, unique identifier for each customer."
+        tests:
+          - unique
+          - not_null
+      - name: first_name
+        description: "Customer first name."
+        tests:
+          - not_null
+      - name: last_name
+        description: "Customer last name."
+        tests:
+          - not_null
+      - name: phone
+        description: "Customer phone number."
+      - name: email
+        description: "Customer email."
+        tests:
+          - not_null
+      - name: street
+        description: "Customer adress."
+        tests:
+          - not_null
+      - name: city
+        description: "Customer city."
+        tests:
+          - not_null
+      - name: state
+        description: "Customer state."
+        tests:
+          - not_null
+      - name: zip_code
+        description: "Customer zip code."
+        tests:
+          - not_null
+
+
+  - name: stg_sales__order_items
+    description: "This model contains the list of bikes included in an order, including quantity, price and discount."
+    columns:
+      - name: order_item_id
+        description: "Primary key, unique identifier for each order item."
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        description: "Foreign key linking the order item to the corresponding order."
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                name: order_id_foreign_key_in_stg_sales__order_items
+                to: ref('stg_sales__orders')
+                field: order_id
+      - name: product_id
+        description: "Foreign key linking the order item to the corresponding bike."
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                name: product_id_foreign_key_in_stg_sales__order_items
+                to: ref('stg_production__products')
+                field: product_id
+      - name: item_id
+        description: "Product numbering per order."
+        tests:
+          - not_null
+      - name: quantity
+        description: "Quantity of bikes ordered."
+        tests:
+          - not_null
+      - name: list_price
+        description: "Unit price of bikes ordered."
+        tests:
+          - not_null
+      - name: discount
+        description: "Discount."
+
+
+  - name: stg_sales__orders
+    description: "This model contains information about orders."
+    columns:
+      - name: order_id
+        description: "Primary key, unique identifier for each order."
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: "Foreign key linking the order to the corresponding customer."
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                name: customer_id_foreign_key_in_stg_sales__orders
+                to: ref('stg_sales__customers')
+                field: customer_id
+      - name: order_status
+        description: "The order status."
+        tests:
+          - not_null
+      - name: order_date
+        description: "The order date."
+        tests:
+          - not_null
+      - name: required_date
+        description: "The date requested by the customer for the order to be delivered."
+        tests:
+          - not_null
+      - name: shipped_date
+        description: "The date of shipping."
+      - name: store_id
+        description: "Foreign key linking the order to the corresponding store."
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                name: store_id_foreign_key_in_stg_sales__orders
+                to: ref('stg_sales__stores')
+                field: store_id
+      - name: staff_id
+        description: "Foreign key linking the order to the corresponding seller."
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                name: staff_id_foreign_key_in_stg_sales__orders
+                to: ref('stg_sales__staffs')
+                field: staff_id
+
+
+  - name: stg_sales__staffs
+    description: "This model contains information about staff."
+    columns:
+      - name: staff_id
+        description: "Primary key, unique identifier for each staff."
+        tests:
+          - unique
+          - not_null
+      - name: first_name
+        description: "Staff first name."
+        tests:
+          - not_null
+      - name: last_name
+        description: "Staff last name."
+        tests:
+          - not_null
+      - name: email
+        description: "Staff email."
+        tests:
+          - not_null
+      - name: phone
+        description: "Staff phone."
+        tests:
+          - not_null
+      - name: active
+        description: "Indicate if the staff is currently active."
+        tests:
+          - not_null
+      - name: store_id
+        description: "Staff's affiliated store."
+        tests:
+          - not_null
+      - name: manager_id
+        description: "Staff's manager."
+
+
+
+
+  - name: stg_sales__stores
+    description: "This model contains the list of stores"
+    columns:
+      - name: stores_id
+        description: "Primary key, unique identifier for each store."
+        tests:
+          - unique
+          - not_null
+      - name: store_name
+        description: "Store name."
+        tests:
+          - not_null
+      - name: phone
+        description: "Store phone number."
+        tests:
+          - not_null
+      - name: email
+        description: "Store email."
+        tests:
+          - not_null
+      - name: street
+        description: "Store adress."
+        tests:
+          - not_null
+      - name: city
+        description: "Store city."
+        tests:
+          - not_null
+      - name: state
+        description: "Store state."
+        tests:
+          - not_null
+      - name: zip_code
+        description: "Store zip code."
+        tests:
+          - not_null
