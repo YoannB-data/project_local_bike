@@ -37,7 +37,7 @@ models:
         tests:
           - unique
           - not_null
-      - name: category_name
+      - name: product_name
         description: "The name of the bike."
       - name: brand_id
         description: "The brand of the bike."
