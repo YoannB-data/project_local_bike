@@ -175,7 +175,7 @@ models:
   - name: stg_sales__stores
     description: "This model contains the list of stores"
     columns:
-      - name: stores_id
+      - name: store_id
         description: "Primary key, unique identifier for each store."
         tests:
           - unique
