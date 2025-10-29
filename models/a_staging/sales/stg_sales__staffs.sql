@@ -6,6 +6,6 @@ SELECT
     cast(phone as string) as phone, 
     cast(active as int64) as active, 
     cast(store_id as int64) as store_id, 
-    safe_cast(manager_id as int64) as manager_id
+    cast( {{ transform_into_null('manager_id') }} as int64) as manager_id
 
 from {{ source('database', 'staffs') }}

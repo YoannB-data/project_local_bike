@@ -48,3 +48,8 @@ models:
         schema: stg_production
       sales:
         schema: stg_sales
+
+
+
+vars:
+  null_list: ['NULL', 'null', ' ', '']
