@@ -2,7 +2,7 @@ with cte_group_orders_per_store as (
     select
         store_id,
         count(distinct order_id) as count_orders,
-        sum(quantity) as quantity_sold,
+        sum(total_quantity) as quantity_sold,
         sum(total_net_revenue) as total_net_revenue
     from {{ ref('int_sales__orders') }}
     group by store_id
