@@ -49,6 +49,12 @@ models:
       sales:
         schema: stg_sales
 
+    b_intermediate:
+      materialized: view
+      production:
+        schema: int_production
+      sales:
+        schema: int_sales
 
 
 vars:
