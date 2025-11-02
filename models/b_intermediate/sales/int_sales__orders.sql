@@ -5,6 +5,7 @@ with cte_group_int_order_items as (
         sum(list_price) as total_list_price,
         sum(net_revenue) as total_net_revenue
     from {{ ref('int_sales__order_items') }}
+    group by order_id
 ),
 
 cte_main as (
