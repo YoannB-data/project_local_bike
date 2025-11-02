@@ -1,4 +1,4 @@
-with cte_group_int_order_items as (
+with cte_group_order_items_per_order as (
     select
         order_id,
         sum(quantity) as total_quantity,
@@ -25,7 +25,7 @@ cte_main as (
         total_list_price,
         total_net_revenue
     from {{ ref('stg_sales__orders') }}
-    left join cte_group_int_order_items
+    left join cte_group_order_items_per_order
     using(order_id)
     left join {{ ref('stg_sales__customers') }} as c
     using(customer_id)
@@ -33,8 +33,6 @@ cte_main as (
     using(store_id)
     left join {{ ref('stg_sales__staffs') }} as s
     using(staff_id)
-    left join cte_group_int_order_items
-    using(order_id)
 )
 
 select 
