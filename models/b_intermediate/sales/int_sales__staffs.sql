@@ -25,7 +25,7 @@ cte_main as (
         last_name, 
         concat(first_name, ' ', last_name) as staff_name,
         s.email as email, 
-        phone, 
+        s.phone as phone, 
         active, 
         store_id, 
         store_name,
