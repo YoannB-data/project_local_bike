@@ -7,7 +7,7 @@ with cte_group_orders_per_customer as (
     group by customer_id
 ),
 
-cte_main (
+cte_main as (
     select
         customer_id,
         first_name,

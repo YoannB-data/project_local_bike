@@ -24,7 +24,7 @@ cte_main as (
         first_name, 
         last_name, 
         concat(first_name, ' ', last_name) as staff_name,
-        email, 
+        s.email as email, 
         phone, 
         active, 
         store_id, 
@@ -35,7 +35,7 @@ cte_main as (
         manager_name,
         quantity_sold,
         total_sales
-    from {{ ref('stg_sales__staffs') }}
+    from {{ ref('stg_sales__staffs') }} as s
     left join cte_manager_name
     using(staff_id)
     left join cte_group_orders_per_staff
