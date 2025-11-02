@@ -10,7 +10,7 @@ with cte_group_order_items_per_order as (
 
 cte_main as (
     select
-        order_id, 
+        o.order_id as order_id, 
         customer_id, 
         concat(c.first_name, ' ', c.last_name) as customer_name,
         order_status, 
@@ -24,7 +24,7 @@ cte_main as (
         total_quantity,
         total_list_price,
         total_net_revenue
-    from {{ ref('stg_sales__orders') }}
+    from {{ ref('stg_sales__orders') }} as o
     left join cte_group_order_items_per_order
     using(order_id)
     left join {{ ref('stg_sales__customers') }} as c
