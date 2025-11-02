@@ -17,7 +17,7 @@ cte_main as (
         order_date, 
         required_date, 
         shipped_date, 
-        store_id, 
+        o.store_id as store_id, 
         store_name,
         staff_id,
         concat(s.first_name, ' ', s.last_name) as staff_name,
