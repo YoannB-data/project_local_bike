@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: int_sales__orders
+    description: '{{ doc("int_sales__orders") }}'
+    columns:
+      - name: order_id
+        description: "Primary key, unique identifier for each order."
+        tests:
+          - unique
+          - not_null
