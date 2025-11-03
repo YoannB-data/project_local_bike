@@ -7,7 +7,7 @@ with cte_main as (
         quantity, 
         list_price, 
         discount,
-        round((quantity * list_price) * (1 - discount),2) as net_revenue
+        (quantity * list_price) * (1 - discount) as net_revenue
     from {{ ref('stg_sales__order_items') }}
 )
 
