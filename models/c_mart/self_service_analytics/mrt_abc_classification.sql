@@ -15,7 +15,7 @@ cte_sum_sales as (
         total_sales_amount,
         rank,
         cumulative_sales,
-        round((cumulative_sales / (select max(cumulative_sales) from cte_rank_and_cumulative_sum) ),2) as cumulative_sales_ratio
+        (cumulative_sales / (select max(cumulative_sales) from cte_rank_and_cumulative_sum) ) as cumulative_sales_ratio
     from 
         cte_rank_and_cumulative_sum
 ),
@@ -35,6 +35,7 @@ cte_abc as (
     from 
         cte_sum_sales
 )
+
 select 
     product_id,
     abc_classification

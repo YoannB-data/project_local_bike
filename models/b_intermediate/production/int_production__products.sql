@@ -58,8 +58,8 @@ with
             list_price,
             coalesce(quantity, 0) as quantity_stock,
             quantity_sold,
-            round(avg_discount, 2) as avg_discount,
-            round(total_sales_amount, 2) as total_sales_amount
+            avg_discount,
+            total_sales_amount
         from cte_products
         left join cte_stock_per_product using (product_id)
         left join cte_product_sold using (product_id)
