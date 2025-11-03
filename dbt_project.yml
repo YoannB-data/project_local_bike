@@ -56,6 +56,13 @@ models:
       sales:
         schema: int_sales
 
+    c_mart:
+      materialized: table
+      dashboard_sources:
+        schema: mrt_dashboard
+      self_service_analytics:
+        schema: mrt_self_service
+
 
 vars:
   null_list: ['NULL', 'null', ' ', '']

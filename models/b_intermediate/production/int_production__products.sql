@@ -10,11 +10,9 @@ with
             model_year,
             list_price
         from {{ ref('stg_production__products') }}
-        left join
-            {{ ref('stg_production__brands') }} 
+        left join {{ ref('int_production__brands') }} 
             using (brand_id)
-        left join
-            {{ ref('stg_production__categories') }}
+        left join {{ ref('int_production__categories') }}
             using (category_id)
     ),
 
@@ -22,7 +20,7 @@ with
         select 
             product_id, 
             sum(quantity) as quantity
-        from {{ ref('stg_production__stocks') }}
+        from {{ ref('int_production__stocks') }}
         group by 
             product_id
 
@@ -34,8 +32,8 @@ with
             product_id,
             quantity,
             discount,
-            (quantity * list_price * (1 - discount)) as total_order_item_amount
-        from {{ ref('stg_sales__order_items') }}
+            net_revenue
+        from {{ ref('int_sales__order_items') }}
     ),
 
     cte_product_sold as (
@@ -43,7 +41,7 @@ with
             product_id,
             sum(quantity) as quantity_sold,
             avg(discount) as avg_discount,
-            sum(total_order_item_amount) as total_item_amount
+            sum(net_revenue) as total_item_amount
         from cte_products_sold_per_order
         group by product_id
     ),

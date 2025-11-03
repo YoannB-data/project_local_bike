@@ -1,13 +1,4 @@
-with cte_group_orders_per_staff as (
-    select
-        staff_id,
-        sum(total_quantity) as quantity_sold,
-        sum(total_net_revenue) as total_sales
-    from {{ ref('int_sales__orders') }}
-    group by staff_id
-),
-
-cte_manager_name as (
+with cte_manager_name as (
     select
         s.staff_id,
         m.first_name as manager_first_name,
@@ -27,21 +18,14 @@ cte_main as (
         s.email as email, 
         s.phone as phone, 
         active, 
-        store_id, 
-        store_name,
+        store_id,
         manager_id,
         manager_first_name,
         manager_last_name,
-        manager_name,
-        quantity_sold,
-        total_sales
+        manager_name
     from {{ ref('stg_sales__staffs') }} as s
     left join cte_manager_name
     using(staff_id)
-    left join cte_group_orders_per_staff
-    using(staff_id)
-    left join {{ ref('stg_sales__stores') }}
-    using(store_id)
 )
 
 select  
