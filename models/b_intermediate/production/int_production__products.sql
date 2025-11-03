@@ -41,7 +41,7 @@ with
             product_id,
             sum(quantity) as quantity_sold,
             avg(discount) as avg_discount,
-            sum(net_revenue) as total_item_amount
+            sum(net_revenue) as total_sales_amount
         from cte_products_sold_per_order
         group by product_id
     ),
@@ -59,7 +59,7 @@ with
             coalesce(quantity, 0) as quantity_stock,
             quantity_sold,
             round(avg_discount, 2) as avg_discount,
-            round(total_item_amount, 2) as total_item_amount
+            round(total_sales_amount, 2) as total_sales_amount
         from cte_products
         left join cte_stock_per_product using (product_id)
         left join cte_product_sold using (product_id)
