@@ -30,7 +30,7 @@ cte_main as (
         using(order_id)
     left join {{ ref('int_production__products') }}
         using(product_id)
-    left join {{ ref('mrt__abc_classification') }}
+    left join {{ ref('fct__abc_classification') }}
         using(product_id)
     group by 
         order_date,
