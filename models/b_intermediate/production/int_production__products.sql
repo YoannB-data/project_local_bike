@@ -10,9 +10,9 @@ with
             model_year,
             list_price
         from {{ ref('stg_production__products') }}
-        left join {{ ref('int_production__brands') }} 
+        left join {{ ref('stg_production__brands') }} 
             using (brand_id)
-        left join {{ ref('int_production__categories') }}
+        left join {{ ref('stg_production__categories') }}
             using (category_id)
     ),
 
@@ -20,7 +20,7 @@ with
         select 
             product_id, 
             sum(quantity) as quantity
-        from {{ ref('int_production__stocks') }}
+        from {{ ref('stg_production__stocks') }}
         group by 
             product_id
 

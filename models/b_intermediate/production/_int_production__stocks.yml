@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: int_production__stocks
+    description: |
+      This model aggregates stocks data.
+    columns:
+      - name: stock_id
+        description: "Primary key, unique identifier for each stock (concat product_id and store_id)."
+        tests:
+          - unique
+          - not_null

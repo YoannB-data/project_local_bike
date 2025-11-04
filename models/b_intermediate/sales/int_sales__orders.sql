@@ -27,11 +27,11 @@ cte_main as (
     from {{ ref('stg_sales__orders') }} as o
     left join cte_group_order_items_per_order
     using(order_id)
-    left join {{ ref('int_sales__customers') }} as c
+    left join {{ ref('stg_sales__customers') }} as c
     using(customer_id)
-    left join {{ ref('int_sales__stores') }}
+    left join {{ ref('stg_sales__stores') }}
     using(store_id)
-    left join {{ ref('int_sales__staffs') }} as s
+    left join {{ ref('stg_sales__staffs') }} as s
     using(staff_id)
 )
 
