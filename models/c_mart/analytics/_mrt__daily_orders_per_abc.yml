@@ -1,0 +1,7 @@
+version: 2
+
+models:
+  - name: mrt__daily_orders_per_abc
+    description: |
+      This model provides an aggregated view of order per abc classification.
+

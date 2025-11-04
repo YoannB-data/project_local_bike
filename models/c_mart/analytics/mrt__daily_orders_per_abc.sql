@@ -21,7 +21,6 @@ with cte_group_order_items as (
 cte_main as (
     select
         order_date,
-        product_name,
         abc_classification,
         sum(quantity_ordered) as quantity_ordered,
         sum(gross_ordered_value) as gross_ordered_value,
@@ -33,9 +32,11 @@ cte_main as (
         using(product_id)
     left join {{ ref('mrt__abc_classification') }}
         using(product_id)
+    order by
+        order_date,
+        abc_classification
     group by 
         order_date,
-        product_name,
         abc_classification
 )
 
