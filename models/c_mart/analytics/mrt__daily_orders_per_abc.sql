@@ -32,10 +32,10 @@ cte_main as (
         using(product_id)
     left join {{ ref('mrt__abc_classification') }}
         using(product_id)
-    order by
+    group by 
         order_date,
         abc_classification
-    group by 
+    order by
         order_date,
         abc_classification
 )
