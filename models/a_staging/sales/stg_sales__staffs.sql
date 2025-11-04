@@ -1,4 +1,4 @@
-SELECT
+select
     cast(staff_id as int64) as staff_id, 
     cast(first_name as string) as first_name, 
     cast(last_name as string) as last_name, 
