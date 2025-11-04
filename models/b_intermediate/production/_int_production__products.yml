@@ -2,7 +2,8 @@ version: 2
 
 models:
   - name: int_production__products
-    description: '{{ doc("int_production__products") }}'
+    description: |
+      This model aggregates products data.
     columns:
       - name: product_id
         description: "Primary key, unique identifier for each product."

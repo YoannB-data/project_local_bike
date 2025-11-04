@@ -1,4 +1,4 @@
-{% docs mrt_abc_classification %}
+{% docs mrt__abc_classification %}
 
 # ABC Classification Model
 
