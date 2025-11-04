@@ -28,7 +28,7 @@ cte_main as(
         store_id, 
         store_name,
         store_city,
-        store_state
+        store_state,
         quantity
     from 
         {{ ref('stg_production__stocks') }}

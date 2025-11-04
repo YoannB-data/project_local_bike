@@ -5,7 +5,7 @@ with cte_rank_and_cumulative_sum as (
         ROW_NUMBER() OVER (ORDER BY total_sales_amount DESC) AS rank,
         SUM(total_sales_amount) OVER (ORDER BY total_sales_amount DESC) AS cumulative_sales
     from 
-        {{ ref('int_production__products') }}
+        {{ ref('mrt__products') }}
 
 ),
 

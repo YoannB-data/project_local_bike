@@ -58,10 +58,10 @@ models:
 
     c_mart:
       materialized: table
-      dashboard_sources:
-        schema: mrt_dashboard
-      self_service_analytics:
-        schema: mrt_self_service
+      calculations:
+        schema: mrt_calculations
+      analytics:
+        schema: mrt_analytics
 
 
 vars:
