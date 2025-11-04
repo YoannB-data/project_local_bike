@@ -1,8 +1,8 @@
 version: 2
 
 models:
-  - name: mrt__abc_classification
-    description: '{{ doc("mrt__abc_classification") }}'
+  - name: fct__abc_classification
+    description: '{{ doc("fct__abc_classification") }}'
     columns:
       - name: product_id
         description: "Primary key, unique identifier for each product."
