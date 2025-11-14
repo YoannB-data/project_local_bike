@@ -18,7 +18,7 @@ cte_stores as (
 
 ),
 
-cte_main as(
+cte_aggregation as(
     select
         stock_id,
         product_id,
@@ -41,4 +41,4 @@ cte_main as(
 select 
     *
 from
-    cte_main
+    cte_aggregation
