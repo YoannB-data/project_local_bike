@@ -8,7 +8,7 @@ with cte_group_order_items_per_order as (
     group by order_id
 ),
 
-cte_main as (
+cte_aggregation as (
     select
         o.order_id as order_id, 
         customer_id, 
@@ -38,4 +38,4 @@ cte_main as (
 select 
     *
 from
-    cte_main
+    cte_aggregation
