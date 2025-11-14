@@ -5,3 +5,18 @@ models:
     description: |
       This model provides an aggregated view of store, combining daily quantity sold, gross revenue and net revenue.
 
+    columns:
+      - name: quantity_ordered
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: '>= 0'
+
+      - name: gross_ordered_value
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: '>= 0'
+              
+      - name: net_ordered_value
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: '>= 0'

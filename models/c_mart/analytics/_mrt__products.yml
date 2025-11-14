@@ -18,3 +18,23 @@ models:
         tests:
           - unique
           - not_null
+
+      - name: quantity_stock
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: '>= 0'
+
+      - name: quantity_sold
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: '>= 0'
+
+      - name: avg_discount
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: '>= 0'
+
+      - name: total_sales_amount
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: '>= 0'
