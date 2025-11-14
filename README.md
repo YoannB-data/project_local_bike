@@ -1,4 +1,4 @@
-# Modélisation des données d'une entreprise de magasin de vélos
+# Modélisation des données d'une chaine de magasins de vélos
 
 # Contexte du projet
 
@@ -28,7 +28,7 @@ La couche mart, à destination des équipes métiers, sera constitué de 4 modè
 * Une vision par client, avec le nombre de commande, les sommes totals dépensées et la moyenne par commande et la durée de vie du client
 * Une vision par produit, avec les quantités vendues, les revenus générés et son stock
 * Une vision par magasin, avec les quantités vendues, les revenus générés et son stock
-* Une vision des performance quotidienne, avec le nombre de commande, les quantités vendues, le total des revenus et la moyenne des revenus
+* Une vision des performances quotidiennes, avec le nombre de commandes, les quantités vendues, le total des revenus et la moyenne des revenus
 
 Un modèle supplémentaire a été développé pour créer l'analyse ABC par produit (méthode de classification découlant du principe de Pareto, la catégorie A regroupant 5% des produits qui génère 40% des revenus, catégorie B avec 20% des produits pour 80% des revenus, le reste étant en C).
 
@@ -43,7 +43,7 @@ Création d'un modèle par table de données :
 
 ### Intermediate (couche Silver)
 Enrichissement des données :
-* Enrichissement des tables les plus importantes, en vue en préparation de la couche Gold
+* Enrichissement des tables les plus importantes, en préparation de la couche Gold
 * Premiers calculs
 
 ### Mart (couche Gold)
