@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: mrt__products
+  - name: mrt__products_performance
     description: |
       This model provides an aggregated view of products, combining data from multiple sources such as brands, categories, stocks and order items. It enriches the order data with the following metrics:
 
@@ -22,19 +22,23 @@ models:
       - name: quantity_stock
         tests:
           - dbt_utils.expression_is_true:
-              expression: '>= 0'
+              arguments:
+                expression: '>= 0'
 
       - name: quantity_sold
         tests:
           - dbt_utils.expression_is_true:
-              expression: '>= 0'
+              arguments:
+                expression: '>= 0'
 
       - name: avg_discount
         tests:
           - dbt_utils.expression_is_true:
-              expression: '>= 0'
+              arguments:
+                expression: '>= 0'
 
       - name: total_sales_amount
         tests:
           - dbt_utils.expression_is_true:
-              expression: '>= 0'
+              arguments:
+                expression: '>= 0'

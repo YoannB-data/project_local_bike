@@ -19,6 +19,7 @@ cte_aggregation as (
         shipped_date, 
         o.store_id as store_id, 
         store_name,
+        st.city as store_city,
         staff_id,
         concat(s.first_name, ' ', s.last_name) as staff_name,
         total_quantity,
@@ -29,7 +30,7 @@ cte_aggregation as (
     using(order_id)
     left join {{ ref('stg_sales__customers') }} as c
     using(customer_id)
-    left join {{ ref('stg_sales__stores') }}
+    left join {{ ref('stg_sales__stores') }} as st
     using(store_id)
     left join {{ ref('stg_sales__staffs') }} as s
     using(staff_id)
